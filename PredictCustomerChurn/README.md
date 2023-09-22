@@ -13,7 +13,11 @@ namely:
 - df.corr() -> df.corr(numeric_only = True)
 - sklearn.metrics.plot_roc_curve -> sklearn.metrics.RocCurveDisplay
 
-Additionally, I added the `requiremets_py3.11.txt` file
+Additionally, I decided against logging the tests results. Both the lectures
+and the Internet tutorials say this is not a common practice in case of unit
+tests, and it makes a lot of sense to me. If this is a "must do", I'll 
+resubmit.
+
 
 ## Files and data description
 The project is organized as follows:
