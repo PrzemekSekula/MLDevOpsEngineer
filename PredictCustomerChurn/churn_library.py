@@ -148,6 +148,8 @@ def perform_eda(data, save_folder=None):
     plt.title('Heatmap of the Correlation')
     plt.savefig(os.path.join(save_folder, 'heatmap.png'))
 
+    logging.info('SUCCESS: EDA charts created.')
+
 
 def encoder_helper(data, category_lst, response='Churn'):
     '''
@@ -274,6 +276,7 @@ def feature_importance_plot(model, x_data, save_to=None):
     plt.figure(figsize=(20, 10))
     shap.summary_plot(shap_values, x_data, plot_type="bar", show=False)
     plt.savefig(save_to)
+    logging.info('SUCCESS: Feature importance plot has been saved.')
 
 
 def get_roc_curve_data(model, x_test, y_test):
@@ -329,6 +332,7 @@ def plot_roc_curve(lrc, rfc, x_test, y_test, save_to=None):
     plt.legend(loc='best')
     plt.title('ROC comparison')
     plt.savefig(save_to)
+    logging.info('SUCCESS: ROC comparison plot has been saved.')
 
 
 def train_models(x_train, x_test, y_train, y_test, args=None):
@@ -359,6 +363,8 @@ def train_models(x_train, x_test, y_train, y_test, args=None):
     cv_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5)
     cv_rfc.fit(x_train, y_train)
 
+    logging.info('SUCCESS: Models trained.')
+
     lrc.fit(x_train, y_train)
     rfc = cv_rfc.best_estimator_  # for convenience
     joblib.dump(rfc, os.path.join(args.model_path, 'rfc_model.pkl'))
@@ -382,6 +388,8 @@ def train_models(x_train, x_test, y_train, y_test, args=None):
     # Save the figure to an images folder
     plt.savefig(os.path.join(args.results_path, 'classification_report.png'))
     plt.close()
+
+    logging.info('SUCCESS: Classification report has been saved.')
 
     feature_importance_plot(
         rfc, x_train,
