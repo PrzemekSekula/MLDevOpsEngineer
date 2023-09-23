@@ -13,11 +13,6 @@ namely:
 - df.corr() -> df.corr(numeric_only = True)
 - sklearn.metrics.plot_roc_curve -> sklearn.metrics.RocCurveDisplay
 
-Additionally, I decided against logging the tests results. Both the lectures
-and the Internet tutorials say this is not a common practice in case of unit
-tests, and it makes a lot of sense to me. If this is a "must do", I'll 
-resubmit.
-
 
 ## Files and data description
 The project is organized as follows:
@@ -33,6 +28,7 @@ actual results)
 - `churn_library.py` - main file with code
 - `test_churn_script_logging_and_tests.py` - unit tests
 - `requirements_py3.11.txt` - requirements for python 3.11
+- `pytest.ini` - pytest configuration (here logging only)
 
 ## Installation
 ```bash
@@ -54,6 +50,11 @@ python churn_library.py --help
 To test the functions use:
 ```bash
 pytest
+```
+By default pytest captures the logging. If you want to force logging level and
+folder, you should use:
+```bash
+pytest -s --log-level=INFO --log-file=./logs/tests.log
 ```
 
 ## Results

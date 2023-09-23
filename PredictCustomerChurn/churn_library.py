@@ -34,14 +34,6 @@ from sklearn.metrics import classification_report, roc_curve, auc
 
 os.environ['QT_QPA_PLATFORM'] = 'offscreen'
 
-logging.basicConfig(
-    filename='./logs/churn.log',
-    level=logging.INFO,
-    filemode='w',
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
-
 parser = argparse.ArgumentParser(
     description='Predict customer churn based on bank data.')
 
